@@ -1,11 +1,4 @@
 # Starter pipeline
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial (c00ac4e1-d4e6-435b-893e-9b4a4e393dbf)'
-    appType: 'webAppLinux'
-    WebAppName: 'seanja'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -19,6 +12,13 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial (c00ac4e1-d4e6-435b-893e-9b4a4e393dbf)'
+    appType: 'webAppLinux'
+    WebAppName: 'seanja'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
